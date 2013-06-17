@@ -8,10 +8,20 @@ public class UndergradStudent extends Person
 	private int GPA;
 	private int totalCredits;
 	
-	public UndergradStudent(String pName, String pAddress, String pHomePhone, String pWorkPhone, String pEmail) 
+	// Can initialize to zero/null or input values when a new Student is created
+//	public UndergradStudent(String pName, String pAddress, String pHomePhone, String pWorkPhone, String pEmail) 
+//	{
+//		super(pName, pAddress, pHomePhone, pWorkPhone, pEmail);
+//		
+//		yearRegistered = 0;
+//		degreeProgram = null;
+//		yearInProgram = 0;
+//		GPA = 0;
+//		totalCredits = 0;
+//	}
+	public UndergradStudent() 
 	{
-		super(pName, pAddress, pHomePhone, pWorkPhone, pEmail);
-		// Can initialize to zero/null or input values when a new Student is created
+		super();
 		yearRegistered = 0;
 		degreeProgram = null;
 		yearInProgram = 0;
@@ -71,8 +81,37 @@ public class UndergradStudent extends Person
 
 	public static void main(String[] args) 
 	{
-		// TODO Add test cases
-
+		UndergradStudent newUndergrad = new UndergradStudent();
+		
+		newUndergrad.setYearRegistered(2013);
+		if(newUndergrad.getYearRegistered() != 2013)
+		{
+			System.out.println("Failed to set the undergrad student's registration year.");
+		}
+		
+		newUndergrad.setDegreeProgram("Medicine");
+		if(!newUndergrad.getDegreeProgram().equals("Medicine"))
+		{
+			System.out.println("Failed to set the undergrad student's degree program.");
+		}
+		
+		newUndergrad.setYearInProgram(1);
+		if(newUndergrad.getYearInProgram() != 1)
+		{
+			System.out.println("Failed to set the undergrad student's year in program.");
+		}
+		
+		newUndergrad.setGPA(98);
+		if(newUndergrad.getGPA() != 98)
+		{
+			System.out.println("Failed to set the undergrad student's GPA.");
+		}
+		
+		newUndergrad.setTotalCredits(64);
+		if(newUndergrad.getTotalCredits() != 64)
+		{
+			System.out.println("Failed to set the undergrad student's total credits.");
+		}
 	}
 
 }

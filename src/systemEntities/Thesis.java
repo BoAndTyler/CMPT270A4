@@ -7,7 +7,8 @@ public class Thesis
 
 	public Thesis() 
 	{
-		// TODO Auto-generated constructor stub
+		title = null;
+		area = null;
 	}
 	
 	public String getTitle()
@@ -32,8 +33,18 @@ public class Thesis
 
 	public static void main(String[] args) 
 	{
-		// TODO Add test cases
-
+		Thesis newThesis = new Thesis();
+		
+		newThesis.setTitle("Thesis Title");
+		if(!newThesis.getTitle().equals("Thesis Title"))
+		{
+			System.out.println("Failed to set the thesis title.");
+		}
+		
+		newThesis.setArea("Field of study");
+		if(!newThesis.getArea().equals("Field of study"))
+		{
+			System.out.println("Failed to set the thesis field of study.");
+		}
 	}
-
 }
