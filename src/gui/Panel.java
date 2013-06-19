@@ -7,19 +7,23 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
-import com.sun.imageio.stream.StreamCloser.CloseAction;
-import com.sun.xml.internal.ws.Closeable;
+import controler.Controler;
 
-import sun.java2d.Disposer;
 
-import java.awt.event.ActionListener;
+
+
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * 
+ * @author Bo Dong and Tyler Spink
+ *
+ */
 public class Panel {
 
 	private JFrame frame;
-
+	Controler theControler; 
 	/**
 	 * Launch the application.
 	 */
@@ -27,7 +31,8 @@ public class Panel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Panel window = new Panel();
+					Controler aControler = new Controler();
+					Panel window = new Panel(aControler);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,8 +44,9 @@ public class Panel {
 	/**
 	 * Create the application.
 	 */
-	public Panel() {
+	public Panel(Controler Ctrl) {
 		initialize();
+		theControler = Ctrl;
 	}
 
 	/**
@@ -64,7 +70,12 @@ public class Panel {
 			 * @Override open a new window to create new elements.
 			 */
 			public void mouseClicked(MouseEvent e) {
-				//TODO
+				try {
+					CreatePerson frame = new CreatePerson(theControler);
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnCreate.setBounds(331, 10, 93, 23);
