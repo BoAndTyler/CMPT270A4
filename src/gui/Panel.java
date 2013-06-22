@@ -8,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import systemEntities.ImportHashtable;
 import systemEntities.Person;
+import systemEntities.SaveHashtable;
 
 import controler.Controler;
 import dataStorage.PersonSetAccess;
@@ -22,6 +24,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Enumeration;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 /**
  * 
  * @author Bo Dong and Tyler Spink
@@ -59,6 +63,17 @@ public class Panel {
 		
 		theControler = Ctrl;
 		frame = new JFrame();
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				SaveHashtable.saveHashtable();
+			}
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				ImportHashtable.importHashtable();
+				updateList();
+			}
+		});
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -156,7 +171,7 @@ public class Panel {
 		btnDelete.setBounds(331, 109, 93, 23);
 		frame.getContentPane().add(btnDelete);
 		
-		JButton btnRefresh = new JButton("refresh");
+		JButton btnRefresh = new JButton("Refresh");
 		btnRefresh.setBounds(10, 220, 93, 23);
 		frame.getContentPane().add(btnRefresh);
 	}

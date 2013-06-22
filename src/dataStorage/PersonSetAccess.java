@@ -33,4 +33,9 @@ public class PersonSetAccess
 		}
 		return personList;
 	}
+	
+	public static void importList(Hashtable<String, Person> newList)
+	{
+		personList = newList;
+	}
 }
