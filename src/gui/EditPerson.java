@@ -24,6 +24,10 @@ import systemEntities.Person;
 import systemEntities.UndergradStudent;
 
 import controler.Controler;
+import dataStorage.PersonSetAccess;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -32,8 +36,9 @@ import controler.Controler;
  * 
  * @author Bo Dong and Tyler Spink
  */
-public class ReadPerson extends JFrame {
-
+public class EditPerson extends JFrame {
+	Person thePerson;
+	Controler theControler;
 	private JPanel contentPane;
 	private JTextField textField_firstName;
 	private JTextField textField_middleInitial;
@@ -80,7 +85,7 @@ public class ReadPerson extends JFrame {
 					aPerson.setScholarShipAmount("3600");
 					aPerson.setDegreeType("Math");
 					Controler aControler = new Controler();
-					ReadPerson frame = new ReadPerson(aControler,aPerson);
+					EditPerson frame = new EditPerson(aControler,aPerson);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -92,9 +97,10 @@ public class ReadPerson extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReadPerson(final Controler Ctrl,Person thePerson) {
+	public EditPerson(final Controler Ctrl,Person aPerson) {
+		theControler = Ctrl;
+		this.thePerson = aPerson;
 		
-		Person aPerson = thePerson;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 720);
@@ -106,14 +112,30 @@ public class ReadPerson extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		JButton btnClose = new JButton("Close");
-		btnClose.addMouseListener(new MouseAdapter() {
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
 			}
 		});
-		panel.add(btnClose);
+		
+		JButton btnEdit = new JButton("Edit");
+		btnEdit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Ctrl.deletePerson(thePerson);
+				addPerson();
+			}
+		});
+		panel.add(btnEdit);
+		panel.add(btnCancel);
+		
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
@@ -136,7 +158,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblFirstName, gbc_lblFirstName);
 		
 		textField_firstName = new JTextField();
-		textField_firstName.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 2;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -154,7 +175,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblMiddleInitial, gbc_lblMiddleInitial);
 		
 		textField_middleInitial = new JTextField();
-		textField_middleInitial.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 2;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -172,7 +192,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblLastName, gbc_lblLastName);
 		
 		textField_lastName = new JTextField();
-		textField_lastName.setEditable(false);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.gridwidth = 2;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
@@ -190,7 +209,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblStreetAddress, gbc_lblStreetAddress);
 		
 		textField_street = new JTextField();
-		textField_street.setEditable(false);
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.gridwidth = 2;
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
@@ -208,7 +226,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblCity, gbc_lblCity);
 		
 		textField_city = new JTextField();
-		textField_city.setEditable(false);
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
 		gbc_textField_5.gridwidth = 2;
 		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
@@ -226,7 +243,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblProvince, gbc_lblProvince);
 		
 		textField_prov = new JTextField();
-		textField_prov.setEditable(false);
 		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
 		gbc_textField_6.gridwidth = 2;
 		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
@@ -244,7 +260,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblPostalCode, gbc_lblPostalCode);
 		
 		textField_postalCode = new JTextField();
-		textField_postalCode.setEditable(false);
 		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
 		gbc_textField_7.gridwidth = 2;
 		gbc_textField_7.insets = new Insets(0, 0, 5, 5);
@@ -278,7 +293,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(label, gbc_label);
 		
 		textField_homePhone = new JTextField();
-		textField_homePhone.setEditable(false);
 		GridBagConstraints gbc_textField_8 = new GridBagConstraints();
 		gbc_textField_8.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_8.fill = GridBagConstraints.HORIZONTAL;
@@ -304,7 +318,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(label_1, gbc_label_1);
 		
 		textField_workPhone = new JTextField();
-		textField_workPhone.setEditable(false);
 		GridBagConstraints gbc_textField_9 = new GridBagConstraints();
 		gbc_textField_9.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_9.fill = GridBagConstraints.HORIZONTAL;
@@ -321,7 +334,6 @@ public class ReadPerson extends JFrame {
 		panel_3.add(lblEmail, gbc_lblEmail);
 		
 		textField_email = new JTextField();
-		textField_email.setEditable(false);
 		GridBagConstraints gbc_textField_10 = new GridBagConstraints();
 		gbc_textField_10.gridwidth = 2;
 		gbc_textField_10.insets = new Insets(0, 0, 5, 5);
@@ -556,7 +568,17 @@ public class ReadPerson extends JFrame {
 			textField_thesisArea.setText(tempGradStu.getThesisArea());
 			textField_scholarship.setText(tempGradStu.getScholarShipAmount());
 			textField_degreeType.setText(tempGradStu.getDegreeType());
-
+			
+			textField_yearRegistered.setEditable(true);
+			textField_degreeProgram.setEditable(true);
+			textField_YearInProgram.setEditable(true);
+			textField_GPA.setEditable(true);
+			textField_totalCredits.setEditable(true);
+			textField_supervisor.setEditable(true);
+			textField_thesisTitle.setEditable(true);
+			textField_thesisArea.setEditable(true);
+			textField_scholarship.setEditable(true);
+			textField_degreeType.setEditable(true);
 
 		}
 
@@ -568,6 +590,11 @@ public class ReadPerson extends JFrame {
 			textField_GPA.setText(tempUngradStu.getGPA());
 			textField_totalCredits.setText(tempUngradStu.getTotalCredits());
 			
+			textField_yearRegistered.setEditable(true);
+			textField_degreeProgram.setEditable(true);
+			textField_YearInProgram.setEditable(true);
+			textField_GPA.setEditable(true);
+			textField_totalCredits.setEditable(true);	
 		} 
 
 		textField_firstName.setText(aPerson.getFirstName());
@@ -582,7 +609,106 @@ public class ReadPerson extends JFrame {
 		textField_email.setText(aPerson.getEmail());
 
 		
-
+		
 	}
-	
+	public boolean addPerson() {
+		if(thePerson instanceof GraduateStudent)
+		{
+			//System.out.println("First Name: " + textField.getText().equals(""));
+			if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))	// TODO - Add more block conditions
+			{
+				String firstName = textField_firstName.getText();
+				String middleInitial = textField_middleInitial.getText();
+				String lastName = textField_lastName.getText();
+				String streetAddress = textField_street.getText();
+				String city = textField_city.getText();
+				String prov = textField_prov.getText();
+				String postalCode = textField_postalCode.getText();
+				String homePhone = textField_homePhone.getText();
+				String workPhone = textField_workPhone.getText();
+				String emailAddress = textField_email.getText();
+				
+				String yearRegistered = textField_yearRegistered.getText();
+				String degreeProgram = textField_degreeProgram.getText();
+				String currentYear = textField_YearInProgram.getText();
+				String marks = textField_GPA.getText();
+				String totalCredits = textField_totalCredits.getText();
+				
+				String supervisor = textField_supervisor.getText();
+				String thesisTitle = textField_thesisTitle.getText();
+				String thesisArea = textField_thesisArea.getText();
+				String scholarship = textField_scholarship.getText();
+				String degreeType = textField_degreeType.getText();
+				
+				
+				theControler.addGraduate(firstName, middleInitial, lastName, streetAddress, city, 
+									prov, postalCode, homePhone, workPhone, emailAddress, 
+									yearRegistered, degreeProgram, currentYear, marks, totalCredits, 
+									supervisor, thesisTitle, thesisArea, scholarship, degreeType);
+				
+				dispose();
+				
+				
+				
+				
+				
+				
+			}
+		}
+		else if(thePerson instanceof UndergradStudent)
+		{
+			if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))
+			{
+				String firstName = textField_firstName.getText();
+				String middleInitial = textField_middleInitial.getText();
+				String lastName = textField_lastName.getText();
+				String streetAddress = textField_street.getText();
+				String city = textField_city.getText();
+				String prov = textField_prov.getText();
+				String postalCode = textField_postalCode.getText();
+				String homePhone = textField_homePhone.getText();
+				String workPhone = textField_workPhone.getText();
+				String emailAddress = textField_email.getText();
+				
+				String yearRegistered = textField_yearRegistered.getText();
+				String degreeProgram = textField_degreeProgram.getText();
+				String currentYear = textField_YearInProgram.getText();
+				String marks = textField_GPA.getText();
+				String totalCredits = textField_totalCredits.getText();
+				
+				
+				theControler.addUndergrad(firstName, middleInitial, lastName, streetAddress, city, 
+									prov, postalCode, homePhone, workPhone, emailAddress, 
+									yearRegistered, degreeProgram, currentYear, marks, totalCredits);
+				dispose();
+			}
+		}
+		else if(thePerson instanceof Person)
+		{
+			if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))
+			{
+				String firstName = textField_firstName.getText();
+				String middleInitial = textField_middleInitial.getText();
+				String lastName = textField_lastName.getText();
+				String streetAddress = textField_street.getText();
+				String city = textField_city.getText();
+				String prov = textField_prov.getText();
+				String postalCode = textField_postalCode.getText();
+				String homePhone = textField_homePhone.getText();
+				String workPhone = textField_workPhone.getText();
+				String emailAddress = textField_email.getText();
+				
+				theControler.addPerson(firstName, middleInitial, lastName, streetAddress, city, 
+								prov, postalCode, homePhone, workPhone, emailAddress);
+				dispose();
+			}
+		}
+		return true;
+	}
 }
+
+
+
+
+		
+

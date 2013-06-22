@@ -59,7 +59,6 @@ public class Panel {
 		
 		theControler = Ctrl;
 		frame = new JFrame();
-		final String lock = "Lock";
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,10 +99,14 @@ public class Panel {
 					//ask for JList for the selected person name
 					Person aPerson;
 					String focus = (String)aJList.getSelectedValue();
+					if (null == focus) {
+						JOptionPane.showMessageDialog(null, "Hey! You selected Nothing!");
+					}else{
 					//search the name in the hashTable
 					aPerson = PersonSetAccess.personList().get(focus);
 					ReadPerson frame = new ReadPerson(theControler,aPerson);
 					frame.setVisible(true);
+					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}			
@@ -120,10 +123,13 @@ public class Panel {
 				//ask for JList for the selected person name
 				Person aPerson;
 				String focus = (String)aJList.getSelectedValue();
+				if (null == focus) {
+					JOptionPane.showMessageDialog(null, "Hey! You selected Nothing!");
+				}else{
 				//search the name in the hashTable
 				aPerson = PersonSetAccess.personList().get(focus);
 				new EditThread(theControler, aPerson, aJList.getSelectedValue()).start();
-				
+				}
 			}
 		});
 		btnUpdate.setBounds(331, 76, 93, 23);

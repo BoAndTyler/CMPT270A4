@@ -25,8 +25,12 @@ public class Controler {
 	public void setPanel(Panel a){
 		this.mainPanel = a;
 	}
-	
-	
+	public Panel getPanel(){
+		return mainPanel;
+	}
+	public void deletePerson(Person aPerson){
+		PersonSetAccess.personList().remove(aPerson.getName());
+	}
 	public void addPerson(String firstName, String middleInitial, String lastName, String streetAddress, String city, 
 			String prov, String postalCode, String homePhone, String workPhone, String emailAddress)
 	{
