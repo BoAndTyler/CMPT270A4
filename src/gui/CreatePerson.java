@@ -17,9 +17,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
-
 import controler.Controler;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -29,6 +27,7 @@ import java.awt.event.ActionEvent;
  * @author Bo Dong and Tyler Spink
  */
 public class CreatePerson extends JFrame {
+	Controler theControler;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JPanel contentPane;
 	private JTextField textField_firstName;
@@ -73,6 +72,7 @@ public class CreatePerson extends JFrame {
 	 * Create the frame.
 	 */
 	public CreatePerson(final Controler Ctrl) {
+		theControler = Ctrl;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 720);
 		contentPane = new JPanel();
@@ -92,88 +92,7 @@ public class CreatePerson extends JFrame {
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 //				System.out.println(buttonGroup.getSelection().getActionCommand());
-				if(buttonGroup.getSelection().getActionCommand().equals("Person"))
-				{
-					//System.out.println("First Name: " + textField.getText().equals(""));
-					if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))	// TODO - Add more block conditions
-					{
-						String firstName = textField_firstName.getText();
-						String middleInitial = textField_middleInitial.getText();
-						String lastName = textField_lastName.getText();
-						String streetAddress = textField_street.getText();
-						String city = textField_city.getText();
-						String prov = textField_prov.getText();
-						String postalCode = textField_postalCode.getText();
-						String homePhone = textField_homePhone.getText();
-						String workPhone = textField_workPhone.getText();
-						String emailAddress = textField_email.getText();
-						
-						Ctrl.addPerson(firstName, middleInitial, lastName, streetAddress, city, 
-										prov, postalCode, homePhone, workPhone, emailAddress);
-						dispose();
-					}
-				}
-				else if(buttonGroup.getSelection().getActionCommand().equals("Undergradate Student"))
-				{
-					if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))
-					{
-						String firstName = textField_firstName.getText();
-						String middleInitial = textField_middleInitial.getText();
-						String lastName = textField_lastName.getText();
-						String streetAddress = textField_street.getText();
-						String city = textField_city.getText();
-						String prov = textField_prov.getText();
-						String postalCode = textField_postalCode.getText();
-						String homePhone = textField_homePhone.getText();
-						String workPhone = textField_workPhone.getText();
-						String emailAddress = textField_email.getText();
-						
-						String yearRegistered = textField_yearRegistered.getText();
-						String degreeProgram = textField_degreeProgram.getText();
-						String currentYear = textField_currentYear.getText();
-						String marks = textField_marks.getText();
-						String totalCredits = textField_totalCredits.getText();
-						
-						Ctrl.addUndergrad(firstName, middleInitial, lastName, streetAddress, city, 
-											prov, postalCode, homePhone, workPhone, emailAddress, 
-											yearRegistered, degreeProgram, currentYear, marks, totalCredits);
-						dispose();
-					}
-				}
-				else if(buttonGroup.getSelection().getActionCommand().equals("Graduate Student"))
-				{
-					if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))
-					{
-						String firstName = textField_firstName.getText();
-						String middleInitial = textField_middleInitial.getText();
-						String lastName = textField_lastName.getText();
-						String streetAddress = textField_street.getText();
-						String city = textField_city.getText();
-						String prov = textField_prov.getText();
-						String postalCode = textField_postalCode.getText();
-						String homePhone = textField_homePhone.getText();
-						String workPhone = textField_workPhone.getText();
-						String emailAddress = textField_email.getText();
-						
-						String yearRegistered = textField_yearRegistered.getText();
-						String degreeProgram = textField_degreeProgram.getText();
-						String currentYear = textField_currentYear.getText();
-						String marks = textField_marks.getText();
-						String totalCredits = textField_totalCredits.getText();
-						
-						String supervisor = textField_supervisor.getText();
-						String thesisTitle = textField_thesisTitle.getText();
-						String thesisArea = textField_thesisArea.getText();
-						String scholarship = textField_scholarship.getText();
-						String degreeType = textField_degreeType.getText();
-						
-						Ctrl.addGraduate(firstName, middleInitial, lastName, streetAddress, city, 
-											prov, postalCode, homePhone, workPhone, emailAddress, 
-											yearRegistered, degreeProgram, currentYear, marks, totalCredits, 
-											supervisor, thesisTitle, thesisArea, scholarship, degreeType);
-						dispose();
-					}
-				}
+				addPerson();
 			}
 		});
 		panel.add(btnCreate);
@@ -692,7 +611,90 @@ public class CreatePerson extends JFrame {
 		panel_3.add(textField_degreeType, gbc_textField_21);
 		textField_degreeType.setColumns(10);
 		
-		
+
 	}
-	
+	public void addPerson() {
+		if(buttonGroup.getSelection().getActionCommand().equals("Person"))
+		{
+			//System.out.println("First Name: " + textField.getText().equals(""));
+			if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))	// TODO - Add more block conditions
+			{
+				String firstName = textField_firstName.getText();
+				String middleInitial = textField_middleInitial.getText();
+				String lastName = textField_lastName.getText();
+				String streetAddress = textField_street.getText();
+				String city = textField_city.getText();
+				String prov = textField_prov.getText();
+				String postalCode = textField_postalCode.getText();
+				String homePhone = textField_homePhone.getText();
+				String workPhone = textField_workPhone.getText();
+				String emailAddress = textField_email.getText();
+				
+				theControler.addPerson(firstName, middleInitial, lastName, streetAddress, city, 
+								prov, postalCode, homePhone, workPhone, emailAddress);
+				dispose();
+			}
+		}
+		else if(buttonGroup.getSelection().getActionCommand().equals("Undergradate Student"))
+		{
+			if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))
+			{
+				String firstName = textField_firstName.getText();
+				String middleInitial = textField_middleInitial.getText();
+				String lastName = textField_lastName.getText();
+				String streetAddress = textField_street.getText();
+				String city = textField_city.getText();
+				String prov = textField_prov.getText();
+				String postalCode = textField_postalCode.getText();
+				String homePhone = textField_homePhone.getText();
+				String workPhone = textField_workPhone.getText();
+				String emailAddress = textField_email.getText();
+				
+				String yearRegistered = textField_yearRegistered.getText();
+				String degreeProgram = textField_degreeProgram.getText();
+				String currentYear = textField_currentYear.getText();
+				String marks = textField_marks.getText();
+				String totalCredits = textField_totalCredits.getText();
+				
+				theControler.addUndergrad(firstName, middleInitial, lastName, streetAddress, city, 
+									prov, postalCode, homePhone, workPhone, emailAddress, 
+									yearRegistered, degreeProgram, currentYear, marks, totalCredits);
+				dispose();
+			}
+		}
+		else if(buttonGroup.getSelection().getActionCommand().equals("Graduate Student"))
+		{
+			if(!textField_firstName.getText().equals("") && !textField_middleInitial.getText().equals("") && !textField_lastName.getText().equals(""))
+			{
+				String firstName = textField_firstName.getText();
+				String middleInitial = textField_middleInitial.getText();
+				String lastName = textField_lastName.getText();
+				String streetAddress = textField_street.getText();
+				String city = textField_city.getText();
+				String prov = textField_prov.getText();
+				String postalCode = textField_postalCode.getText();
+				String homePhone = textField_homePhone.getText();
+				String workPhone = textField_workPhone.getText();
+				String emailAddress = textField_email.getText();
+				
+				String yearRegistered = textField_yearRegistered.getText();
+				String degreeProgram = textField_degreeProgram.getText();
+				String currentYear = textField_currentYear.getText();
+				String marks = textField_marks.getText();
+				String totalCredits = textField_totalCredits.getText();
+				
+				String supervisor = textField_supervisor.getText();
+				String thesisTitle = textField_thesisTitle.getText();
+				String thesisArea = textField_thesisArea.getText();
+				String scholarship = textField_scholarship.getText();
+				String degreeType = textField_degreeType.getText();
+				
+				theControler.addGraduate(firstName, middleInitial, lastName, streetAddress, city, 
+									prov, postalCode, homePhone, workPhone, emailAddress, 
+									yearRegistered, degreeProgram, currentYear, marks, totalCredits, 
+									supervisor, thesisTitle, thesisArea, scholarship, degreeType);
+				dispose();
+			}
+		}
+	}
 }
