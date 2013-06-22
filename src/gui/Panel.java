@@ -33,6 +33,7 @@ public class Panel {
 
 	private JFrame frame;
 	Controler theControler; 
+	JList aJList;
 	/**
 	 * Launch the application.
 	 */
@@ -55,24 +56,19 @@ public class Panel {
 	 * Create the application.
 	 */
 	public Panel(Controler Ctrl) {
-		initialize();
+		
 		theControler = Ctrl;
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
+		final String lock = "Lock";
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		final JList list = new JList(listModel);	// Added listModel to input
+		aJList = new JList(listModel);	// Added listModel to input
 //		JList list = new JList();
-		list.setBounds(10, 10, 300, 200);
-		frame.getContentPane().add(list);
+		aJList.setBounds(10, 10, 300, 200);
+		frame.getContentPane().add(aJList);
 		
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
@@ -101,23 +97,35 @@ public class Panel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					//ask for Jlist for the selected person name
+					//ask for JList for the selected person name
 					Person aPerson;
-					String focus = (String)list.getSelectedValue();
+					String focus = (String)aJList.getSelectedValue();
 					//search the name in the hashTable
 					aPerson = PersonSetAccess.personList().get(focus);
 					ReadPerson frame = new ReadPerson(theControler,aPerson);
 					frame.setVisible(true);
 				} catch (Exception e1) {
 					e1.printStackTrace();
-				}
-				
+				}			
 			}
 		});
 		btnRead.setBounds(331, 43, 93, 23);
 		frame.getContentPane().add(btnRead);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			
+				//ask for JList for the selected person name
+				Person aPerson;
+				String focus = (String)aJList.getSelectedValue();
+				//search the name in the hashTable
+				aPerson = PersonSetAccess.personList().get(focus);
+				new EditThread(theControler, aPerson, aJList.getSelectedValue()).start();
+				
+			}
+		});
 		btnUpdate.setBounds(331, 76, 93, 23);
 		frame.getContentPane().add(btnUpdate);
 		
@@ -125,17 +133,13 @@ public class Panel {
 		btnDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(list.getSelectedValue() != null)
+				if(aJList.getSelectedValue() != null)
 				{
-					int n = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + (String)list.getSelectedValue() 
+					int n = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + (String)aJList.getSelectedValue() 
 															+ " ?", "Confirm delete", JOptionPane.YES_NO_OPTION); 
 			        if (n == JOptionPane.YES_OPTION) 
 			        { 
-				        String focus = (String)list.getSelectedValue();
-			        	int index = list.getSelectedIndex();
-			        	PersonSetAccess.personList().remove(focus);
-			        	listModel.remove(index);
-			        	updateList();
+			        	deleteSelected();
 			        } else if (n == JOptionPane.NO_OPTION) 
 			        { 
 			            //close this YES or No Window and do nothing.
@@ -150,6 +154,9 @@ public class Panel {
 		btnRefresh.setBounds(10, 220, 93, 23);
 		frame.getContentPane().add(btnRefresh);
 	}
+
+	
+	
 	
 	public void updateList()
 	{
@@ -161,5 +168,13 @@ public class Panel {
 			listModel.addElement((String)names.nextElement());
 			//names.nextElement();
 		}
+	}
+	
+	public void deleteSelected(){
+		String focus = (String)aJList.getSelectedValue();
+    	int index = aJList.getSelectedIndex();
+    	PersonSetAccess.personList().remove(focus);
+    	listModel.remove(index);
+    	updateList();
 	}
 }
