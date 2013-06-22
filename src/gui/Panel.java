@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import systemEntities.Person;
+
 import controler.Controler;
 import dataStorage.PersonSetAccess;
 
@@ -95,6 +97,23 @@ public class Panel {
 		frame.getContentPane().add(btnCreate);
 		
 		JButton btnRead = new JButton("Read");
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				try {
+					//ask for Jlist for the selected person name
+					Person aPerson;
+					String focus = (String)list.getSelectedValue();
+					//search the name in the hashTable
+					aPerson = PersonSetAccess.personList().get(focus);
+					ReadPerson frame = new ReadPerson(theControler,aPerson);
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnRead.setBounds(331, 43, 93, 23);
 		frame.getContentPane().add(btnRead);
 		
@@ -112,14 +131,9 @@ public class Panel {
 															+ " ?", "Confirm delete", JOptionPane.YES_NO_OPTION); 
 			        if (n == JOptionPane.YES_OPTION) 
 			        { 
-			        	//System.out.println((String)list.getSelectedValue());
-			        	String focus = (String)list.getSelectedValue();
+				        String focus = (String)list.getSelectedValue();
 			        	int index = list.getSelectedIndex();
 			        	PersonSetAccess.personList().remove(focus);
-	//		        	if(PersonSetAccess.personList().containsKey(focus))
-	//		        	{
-	//		        		System.out.println("Should not find this key.");
-	//		        	}
 			        	listModel.remove(index);
 			        	updateList();
 			        } else if (n == JOptionPane.NO_OPTION) 
