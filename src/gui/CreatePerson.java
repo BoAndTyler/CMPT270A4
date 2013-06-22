@@ -35,7 +35,6 @@ public class CreatePerson extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
@@ -48,9 +47,10 @@ public class CreatePerson extends JFrame {
 	private JTextField textField_14;
 	private JTextField textField_15;
 	private JTextField textField_16;
-	private JTextField textField_17;
 	private JTextField textField_18;
 	private JTextField textField_19;
+	private JTextField textField_20;
+	private JTextField textField_21;
 
 	/**
 	 * Launch the application.
@@ -72,14 +72,13 @@ public class CreatePerson extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CreatePerson(Controler Ctrl) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public CreatePerson(final Controler Ctrl) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		Controler theControler = Ctrl;
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
@@ -89,7 +88,94 @@ public class CreatePerson extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		JButton btnCreate = new JButton("Create");
+		JButton btnCreate = new JButton("Save");
+		btnCreate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+//				System.out.println(buttonGroup.getSelection().getActionCommand());
+				if(buttonGroup.getSelection().getActionCommand().equals("Person"))
+				{
+					//System.out.println("First Name: " + textField.getText().equals(""));
+					if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals(""))	// TODO - Add more block conditions
+					{
+						String firstName = textField.getText();
+						String middleInitial = textField_1.getText();
+						String lastName = textField_2.getText();
+						String streetAddress = textField_3.getText();
+						String city = textField_5.getText();
+						String prov = textField_6.getText();
+						String postalCode = textField_7.getText();
+						String homePhone = textField_8.getText();
+						String workPhone = textField_9.getText();
+						String emailAddress = textField_10.getText();
+						
+						Ctrl.addPerson(firstName, middleInitial, lastName, streetAddress, city, 
+										prov, postalCode, homePhone, workPhone, emailAddress);
+						dispose();
+					}
+				}
+				else if(buttonGroup.getSelection().getActionCommand().equals("Undergradate Student"))
+				{
+					if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals(""))
+					{
+						String firstName = textField.getText();
+						String middleInitial = textField_1.getText();
+						String lastName = textField_2.getText();
+						String streetAddress = textField_3.getText();
+						String city = textField_5.getText();
+						String prov = textField_6.getText();
+						String postalCode = textField_7.getText();
+						String homePhone = textField_8.getText();
+						String workPhone = textField_9.getText();
+						String emailAddress = textField_10.getText();
+						
+						String yearRegistered = textField_11.getText();
+						String degreeProgram = textField_12.getText();
+						String currentYear = textField_13.getText();
+						String marks = textField_14.getText();
+						String totalCredits = textField_15.getText();
+						
+						Ctrl.addUndergrad(firstName, middleInitial, lastName, streetAddress, city, 
+											prov, postalCode, homePhone, workPhone, emailAddress, 
+											yearRegistered, degreeProgram, currentYear, marks, totalCredits);
+						dispose();
+					}
+				}
+				else if(buttonGroup.getSelection().getActionCommand().equals("Graduate Student"))
+				{
+					if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals(""))
+					{
+						String firstName = textField.getText();
+						String middleInitial = textField_1.getText();
+						String lastName = textField_2.getText();
+						String streetAddress = textField_3.getText();
+						String city = textField_5.getText();
+						String prov = textField_6.getText();
+						String postalCode = textField_7.getText();
+						String homePhone = textField_8.getText();
+						String workPhone = textField_9.getText();
+						String emailAddress = textField_10.getText();
+						
+						String yearRegistered = textField_11.getText();
+						String degreeProgram = textField_12.getText();
+						String currentYear = textField_13.getText();
+						String marks = textField_14.getText();
+						String totalCredits = textField_15.getText();
+						
+						String supervisor = textField_16.getText();
+						String thesisTitle = textField_18.getText();
+						String thesisArea = textField_19.getText();
+						String scholarship = textField_20.getText();
+						String degreeType = textField_21.getText();
+						
+						Ctrl.addGraduate(firstName, middleInitial, lastName, streetAddress, city, 
+											prov, postalCode, homePhone, workPhone, emailAddress, 
+											yearRegistered, degreeProgram, currentYear, marks, totalCredits, 
+											supervisor, thesisTitle, thesisArea, scholarship, degreeType);
+						dispose();
+					}
+				}
+			}
+		});
 		panel.add(btnCreate);
 		
 		JButton btnCancel = new JButton("Cancel");
@@ -109,19 +195,21 @@ public class CreatePerson extends JFrame {
 		panel_2.add(panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[]{17, 61, 39, 145, 121, 0};
-		gbl_panel_3.rowHeights = new int[]{23, 0, 0, 27, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_3.rowHeights = new int[]{23, 0, 0, 27, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
 		JRadioButton rdbtnPerson = new JRadioButton("Person");
+		rdbtnPerson.setSelected(true);
+		rdbtnPerson.setActionCommand("Person");
 		rdbtnPerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setEditable(true);
 				textField_1.setEditable(true);
 				textField_2.setEditable(true);
 				textField_3.setEditable(true);
-				textField_4.setEditable(true);
+				//textField_4.setEditable(true);
 				textField_5.setEditable(true);
 				textField_6.setEditable(true);
 				textField_7.setEditable(true);
@@ -134,9 +222,11 @@ public class CreatePerson extends JFrame {
 				textField_14.setEditable(false);
 				textField_15.setEditable(false);
 				textField_16.setEditable(false);
-				textField_17.setEditable(false);
+				//textField_17.setEditable(false);
 				textField_18.setEditable(false);
-				textField_19.setEditable(false);				
+				textField_19.setEditable(false);
+				textField_20.setEditable(false);
+				textField_21.setEditable(false);
 			}
 		});
 		buttonGroup.add(rdbtnPerson);
@@ -155,7 +245,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblFirstName, gbc_lblFirstName);
 		
 		textField = new JTextField();
-		textField.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 2;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -166,13 +255,14 @@ public class CreatePerson extends JFrame {
 		textField.setColumns(10);
 		
 		JRadioButton rdbtnUndergradstudent = new JRadioButton("Undergradate Student");
+		rdbtnUndergradstudent.setActionCommand("Undergradate Student");
 		rdbtnUndergradstudent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setEditable(true);
 				textField_1.setEditable(true);
 				textField_2.setEditable(true);
 				textField_3.setEditable(true);
-				textField_4.setEditable(true);
+				//textField_4.setEditable(true);
 				textField_5.setEditable(true);
 				textField_6.setEditable(true);
 				textField_7.setEditable(true);
@@ -185,9 +275,11 @@ public class CreatePerson extends JFrame {
 				textField_14.setEditable(true);
 				textField_15.setEditable(true);
 				textField_16.setEditable(false);
-				textField_17.setEditable(false);
+				//textField_17.setEditable(false);
 				textField_18.setEditable(false);
 				textField_19.setEditable(false);
+				textField_20.setEditable(false);
+				textField_21.setEditable(false);
 			}
 		});
 		buttonGroup.add(rdbtnUndergradstudent);
@@ -206,7 +298,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblMiddleInitial, gbc_lblMiddleInitial);
 		
 		textField_1 = new JTextField();
-		textField_1.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 2;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -217,13 +308,14 @@ public class CreatePerson extends JFrame {
 		textField_1.setColumns(10);
 		
 		JRadioButton rdbtnGraduateStudent = new JRadioButton("Graduate Student");
+		rdbtnGraduateStudent.setActionCommand("Graduate Student");
 		rdbtnGraduateStudent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setEditable(true);
 				textField_1.setEditable(true);
 				textField_2.setEditable(true);
 				textField_3.setEditable(true);
-				textField_4.setEditable(true);
+				//textField_4.setEditable(true);
 				textField_5.setEditable(true);
 				textField_6.setEditable(true);
 				textField_7.setEditable(true);
@@ -236,9 +328,11 @@ public class CreatePerson extends JFrame {
 				textField_14.setEditable(true);
 				textField_15.setEditable(true);
 				textField_16.setEditable(true);
-				textField_17.setEditable(true);
+				//textField_17.setEditable(true);
 				textField_18.setEditable(true);
-				textField_19.setEditable(true);	
+				textField_19.setEditable(true);
+				textField_20.setEditable(true);
+				textField_21.setEditable(true);
 			}
 		});
 		buttonGroup.add(rdbtnGraduateStudent);
@@ -257,7 +351,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblLastName, gbc_lblLastName);
 		
 		textField_2 = new JTextField();
-		textField_2.setEditable(false);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.gridwidth = 2;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
@@ -267,7 +360,7 @@ public class CreatePerson extends JFrame {
 		panel_3.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblStreetAddress = new JLabel("Street Address1");
+		JLabel lblStreetAddress = new JLabel("Street Address");
 		GridBagConstraints gbc_lblStreetAddress = new GridBagConstraints();
 		gbc_lblStreetAddress.insets = new Insets(0, 0, 5, 5);
 		gbc_lblStreetAddress.gridx = 1;
@@ -275,7 +368,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblStreetAddress, gbc_lblStreetAddress);
 		
 		textField_3 = new JTextField();
-		textField_3.setEditable(false);
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.gridwidth = 2;
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
@@ -285,24 +377,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
 		
-		JLabel lblStreetAddress_1 = new JLabel("Street Address2");
-		GridBagConstraints gbc_lblStreetAddress_1 = new GridBagConstraints();
-		gbc_lblStreetAddress_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblStreetAddress_1.gridx = 1;
-		gbc_lblStreetAddress_1.gridy = 5;
-		panel_3.add(lblStreetAddress_1, gbc_lblStreetAddress_1);
-		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.gridwidth = 2;
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 2;
-		gbc_textField_4.gridy = 5;
-		panel_3.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
-		
 		JLabel lblCity = new JLabel("City");
 		GridBagConstraints gbc_lblCity = new GridBagConstraints();
 		gbc_lblCity.insets = new Insets(0, 0, 5, 5);
@@ -311,7 +385,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblCity, gbc_lblCity);
 		
 		textField_5 = new JTextField();
-		textField_5.setEditable(false);
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
 		gbc_textField_5.gridwidth = 2;
 		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
@@ -329,7 +402,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblProvince, gbc_lblProvince);
 		
 		textField_6 = new JTextField();
-		textField_6.setEditable(false);
 		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
 		gbc_textField_6.gridwidth = 2;
 		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
@@ -347,7 +419,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblPostalCode, gbc_lblPostalCode);
 		
 		textField_7 = new JTextField();
-		textField_7.setEditable(false);
 		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
 		gbc_textField_7.gridwidth = 2;
 		gbc_textField_7.insets = new Insets(0, 0, 5, 5);
@@ -381,7 +452,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(label, gbc_label);
 		
 		textField_8 = new JTextField();
-		textField_8.setEditable(false);
 		GridBagConstraints gbc_textField_8 = new GridBagConstraints();
 		gbc_textField_8.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_8.fill = GridBagConstraints.HORIZONTAL;
@@ -407,7 +477,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(label_1, gbc_label_1);
 		
 		textField_9 = new JTextField();
-		textField_9.setEditable(false);
 		GridBagConstraints gbc_textField_9 = new GridBagConstraints();
 		gbc_textField_9.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_9.fill = GridBagConstraints.HORIZONTAL;
@@ -424,7 +493,6 @@ public class CreatePerson extends JFrame {
 		panel_3.add(lblEmail, gbc_lblEmail);
 		
 		textField_10 = new JTextField();
-		textField_10.setEditable(false);
 		GridBagConstraints gbc_textField_10 = new GridBagConstraints();
 		gbc_textField_10.gridwidth = 2;
 		gbc_textField_10.insets = new Insets(0, 0, 5, 5);
@@ -550,23 +618,13 @@ public class CreatePerson extends JFrame {
 		gbc_lblThesis.gridy = 19;
 		panel_3.add(lblThesis, gbc_lblThesis);
 		
-		textField_17 = new JTextField();
-		textField_17.setEditable(false);
-		GridBagConstraints gbc_textField_17 = new GridBagConstraints();
-		gbc_textField_17.gridwidth = 2;
-		gbc_textField_17.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_17.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_17.gridx = 2;
-		gbc_textField_17.gridy = 19;
-		panel_3.add(textField_17, gbc_textField_17);
-		textField_17.setColumns(10);
-		
-		JLabel lblScholarshipAmount = new JLabel("ScholarShip Amount");
-		GridBagConstraints gbc_lblScholarshipAmount = new GridBagConstraints();
-		gbc_lblScholarshipAmount.insets = new Insets(0, 0, 5, 5);
-		gbc_lblScholarshipAmount.gridx = 1;
-		gbc_lblScholarshipAmount.gridy = 20;
-		panel_3.add(lblScholarshipAmount, gbc_lblScholarshipAmount);
+		JLabel lblTitle = new JLabel("Title");
+		GridBagConstraints gbc_lblTitle = new GridBagConstraints();
+		gbc_lblTitle.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTitle.anchor = GridBagConstraints.EAST;
+		gbc_lblTitle.gridx = 1;
+		gbc_lblTitle.gridy = 20;
+		panel_3.add(lblTitle, gbc_lblTitle);
 		
 		textField_18 = new JTextField();
 		textField_18.setEditable(false);
@@ -579,23 +637,60 @@ public class CreatePerson extends JFrame {
 		panel_3.add(textField_18, gbc_textField_18);
 		textField_18.setColumns(10);
 		
-		JLabel lblDegreeType = new JLabel("Degree Type");
-		GridBagConstraints gbc_lblDegreeType = new GridBagConstraints();
-		gbc_lblDegreeType.insets = new Insets(0, 0, 0, 5);
-		gbc_lblDegreeType.gridx = 1;
-		gbc_lblDegreeType.gridy = 21;
-		panel_3.add(lblDegreeType, gbc_lblDegreeType);
+		JLabel lblArea = new JLabel("Area");
+		GridBagConstraints gbc_lblArea = new GridBagConstraints();
+		gbc_lblArea.insets = new Insets(0, 0, 5, 5);
+		gbc_lblArea.anchor = GridBagConstraints.EAST;
+		gbc_lblArea.gridx = 1;
+		gbc_lblArea.gridy = 21;
+		panel_3.add(lblArea, gbc_lblArea);
 		
 		textField_19 = new JTextField();
 		textField_19.setEditable(false);
 		GridBagConstraints gbc_textField_19 = new GridBagConstraints();
 		gbc_textField_19.gridwidth = 2;
-		gbc_textField_19.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_19.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_19.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_19.gridx = 2;
 		gbc_textField_19.gridy = 21;
 		panel_3.add(textField_19, gbc_textField_19);
 		textField_19.setColumns(10);
+		
+		JLabel lblScholarshipAmount = new JLabel("ScholarShip Amount");
+		GridBagConstraints gbc_lblScholarshipAmount = new GridBagConstraints();
+		gbc_lblScholarshipAmount.insets = new Insets(0, 0, 5, 5);
+		gbc_lblScholarshipAmount.gridx = 1;
+		gbc_lblScholarshipAmount.gridy = 22;
+		panel_3.add(lblScholarshipAmount, gbc_lblScholarshipAmount);
+		
+		textField_20 = new JTextField();
+		textField_20.setEditable(false);
+		GridBagConstraints gbc_textField_20 = new GridBagConstraints();
+		gbc_textField_20.gridwidth = 2;
+		gbc_textField_20.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_20.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_20.gridx = 2;
+		gbc_textField_20.gridy = 22;
+		panel_3.add(textField_20, gbc_textField_20);
+		textField_20.setColumns(10);
+		
+		JLabel lblDegreeType = new JLabel("Degree Type");
+		GridBagConstraints gbc_lblDegreeType = new GridBagConstraints();
+		gbc_lblDegreeType.insets = new Insets(0, 0, 0, 5);
+		gbc_lblDegreeType.gridx = 1;
+		gbc_lblDegreeType.gridy = 23;
+		panel_3.add(lblDegreeType, gbc_lblDegreeType);
+		
+		textField_21 = new JTextField();
+		textField_21.setEditable(false);
+		GridBagConstraints gbc_textField_21 = new GridBagConstraints();
+		gbc_textField_21.gridwidth = 2;
+		gbc_textField_21.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_21.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_21.gridx = 2;
+		gbc_textField_21.gridy = 23;
+		panel_3.add(textField_21, gbc_textField_21);
+		textField_21.setColumns(10);
 		
 		
 	}

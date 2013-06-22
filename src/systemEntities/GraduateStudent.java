@@ -2,11 +2,15 @@ package systemEntities;
 
 public class GraduateStudent extends UndergradStudent 
 {
+//	private String thesisSupervisor;
+//	private Thesis thesis;
+//	private int scholarShipAmount;
+//	private String degreeType;
 	private String thesisSupervisor;
 	private Thesis thesis;
-	private int scholarShipAmount;
+	private String scholarShipAmount;
 	private String degreeType;
-
+	
 	// Can initialize to zero/null or input values when a new Student is created
 //	public GraduateStudent(String pName, String pAddress, String pHomePhone, String pWorkPhone, String pEmail) 
 //	{
@@ -22,7 +26,7 @@ public class GraduateStudent extends UndergradStudent
 		super();
 		thesisSupervisor = null;
 		thesis = new Thesis();
-		scholarShipAmount = 0;
+		scholarShipAmount = null;
 		degreeType = null;
 	}
 	
@@ -36,7 +40,7 @@ public class GraduateStudent extends UndergradStudent
 		return thesis.getTitle() + "/n" + thesis.getArea();
 	}
 	
-	public int getScholarShipAmount()
+	public String getScholarShipAmount()
 	{
 		return scholarShipAmount;
 	}
@@ -57,7 +61,7 @@ public class GraduateStudent extends UndergradStudent
 		thesis.setArea(newArea);
 	}
 	
-	public void setScholarShipAmount(int amount)
+	public void setScholarShipAmount(String amount)
 	{
 		scholarShipAmount = amount;
 	}
@@ -83,8 +87,8 @@ public class GraduateStudent extends UndergradStudent
 			System.out.println("Failed to set the thesis title.");
 		}
 		
-		newGradStudent.setScholarShipAmount(1000);
-		if(newGradStudent.getScholarShipAmount() != 1000)
+		newGradStudent.setScholarShipAmount("1000");
+		if(!newGradStudent.getScholarShipAmount().equals("1000"))
 		{
 			System.out.println("Failed to set the grad student's scholarship amount.");
 		}

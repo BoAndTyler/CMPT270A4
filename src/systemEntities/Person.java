@@ -65,17 +65,26 @@ public class Person
 	
 	public void setAddress(String streetAddress, String city, String prov, String postalCode)
 	{
-		address = streetAddress + "/n" + city + ", " + prov + ", " + postalCode;
+		address = streetAddress + "\n" + city + ", " + prov + ", " + postalCode;
 	}
 	
+	// TODO - Get rid of substring
+//	public void setHomePhoneNum(String phoneNum)
+//	{	
+//		phoneNumHome = "306-" + phoneNum.substring(0,3) + "-" + phoneNum.substring(3);
+//	}
 	public void setHomePhoneNum(String phoneNum)
 	{	
-		phoneNumHome = "306-" + phoneNum.substring(0,3) + "-" + phoneNum.substring(3);
+		phoneNumHome = phoneNum;
 	}
 	
+//	public void setWorkPhoneNum(String phoneNum)
+//	{	
+//		phoneNumWork = "306-" + phoneNum.substring(0,3) + "-" + phoneNum.substring(3);
+//	}
 	public void setWorkPhoneNum(String phoneNum)
 	{	
-		phoneNumWork = "306-" + phoneNum.substring(0,3) + "-" + phoneNum.substring(3);
+		phoneNumWork = phoneNum;
 	}
 	
 	public void setEmail(String emailAddress)
@@ -94,19 +103,19 @@ public class Person
 		}
 		
 		newPerson.setAddress("123 Anywhere Street", "City", "Province", "A1B2C3");
-		if(!newPerson.getAddress().equals("123 Anywhere Street/nCity, Province, A1B2C3"))
+		if(!newPerson.getAddress().equals("123 Anywhere Street\nCity, Province, A1B2C3"))
 		{
 			System.out.println("Failed to set the person's address.");
 		}
 		
 		newPerson.setHomePhoneNum("1234567");
-		if(!newPerson.getHomePhoneNum().equals("306-123-4567"))
+		if(!newPerson.getHomePhoneNum().equals("1234567"))
 		{
 			System.out.println("Failed to set the person's home phone number.");
 		}
 		
 		newPerson.setWorkPhoneNum("9876543");
-		if(!newPerson.getWorkPhoneNum().equals("306-987-6543"))
+		if(!newPerson.getWorkPhoneNum().equals("9876543"))
 		{
 			System.out.println("Failed to set the person's work phone number.");
 		}

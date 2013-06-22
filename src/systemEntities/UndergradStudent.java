@@ -2,11 +2,16 @@ package systemEntities;
 
 public class UndergradStudent extends Person 
 {
-	private int yearRegistered;
+//	private int yearRegistered;
+//	private String degreeProgram;
+//	private int yearInProgram;
+//	private int GPA;
+//	private int totalCredits;
+	private String yearRegistered;
 	private String degreeProgram;
-	private int yearInProgram;
-	private int GPA;
-	private int totalCredits;
+	private String yearInProgram;
+	private String GPA;
+	private String totalCredits;
 	
 	// Can initialize to zero/null or input values when a new Student is created
 //	public UndergradStudent(String pName, String pAddress, String pHomePhone, String pWorkPhone, String pEmail) 
@@ -22,14 +27,14 @@ public class UndergradStudent extends Person
 	public UndergradStudent() 
 	{
 		super();
-		yearRegistered = 0;
+		yearRegistered = null;
 		degreeProgram = null;
-		yearInProgram = 0;
-		GPA = 0;
-		totalCredits = 0;
+		yearInProgram = null;
+		GPA = null;
+		totalCredits = null;
 	}
 	
-	public int getYearRegistered()
+	public String getYearRegistered()
 	{
 		return yearRegistered;
 	}
@@ -39,22 +44,22 @@ public class UndergradStudent extends Person
 		return degreeProgram;
 	}
 	
-	public int getYearInProgram()
+	public String getYearInProgram()
 	{
 		return yearInProgram;
 	}
 	
-	public int getGPA()
+	public String getGPA()
 	{
 		return GPA;
 	}
 	
-	public int getTotalCredits()
+	public String getTotalCredits()
 	{
 		return totalCredits;
 	}
 	
-	public void setYearRegistered(int year)
+	public void setYearRegistered(String year)
 	{
 		yearRegistered = year;
 	}
@@ -64,17 +69,17 @@ public class UndergradStudent extends Person
 		degreeProgram = degree;
 	}
 	
-	public void setYearInProgram(int years)
+	public void setYearInProgram(String years)
 	{
 		yearInProgram = years;
 	}
 	
-	public void setGPA(int marks)
+	public void setGPA(String marks)
 	{
 		GPA = marks;
 	}
 	
-	public void setTotalCredits(int credits)
+	public void setTotalCredits(String credits)
 	{
 		totalCredits = credits;
 	}
@@ -83,8 +88,8 @@ public class UndergradStudent extends Person
 	{
 		UndergradStudent newUndergrad = new UndergradStudent();
 		
-		newUndergrad.setYearRegistered(2013);
-		if(newUndergrad.getYearRegistered() != 2013)
+		newUndergrad.setYearRegistered("2013");
+		if(!newUndergrad.getYearRegistered().equals("2013"))
 		{
 			System.out.println("Failed to set the undergrad student's registration year.");
 		}
@@ -95,20 +100,20 @@ public class UndergradStudent extends Person
 			System.out.println("Failed to set the undergrad student's degree program.");
 		}
 		
-		newUndergrad.setYearInProgram(1);
-		if(newUndergrad.getYearInProgram() != 1)
+		newUndergrad.setYearInProgram("1");
+		if(!newUndergrad.getYearInProgram().equals("1"))
 		{
 			System.out.println("Failed to set the undergrad student's year in program.");
 		}
 		
-		newUndergrad.setGPA(98);
-		if(newUndergrad.getGPA() != 98)
+		newUndergrad.setGPA("98");
+		if(!newUndergrad.getGPA().equals("98"))
 		{
 			System.out.println("Failed to set the undergrad student's GPA.");
 		}
 		
-		newUndergrad.setTotalCredits(64);
-		if(newUndergrad.getTotalCredits() != 64)
+		newUndergrad.setTotalCredits("64");
+		if(!newUndergrad.getTotalCredits().equals("64"))
 		{
 			System.out.println("Failed to set the undergrad student's total credits.");
 		}
