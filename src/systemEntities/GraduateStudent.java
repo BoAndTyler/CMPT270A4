@@ -39,6 +39,13 @@ public class GraduateStudent extends UndergradStudent
 	{
 		return thesis.getTitle() + "/n" + thesis.getArea();
 	}
+	public String getThesisTitle(){
+		return thesis.getTitle();
+	}
+	
+	public String getThesisArea(){
+		return thesis.getArea();
+	}
 	
 	public String getScholarShipAmount()
 	{

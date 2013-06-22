@@ -2,8 +2,13 @@ package systemEntities;
 
 public class Person 
 {
-	private String name;
-	private String address;
+	private String firstName;
+	private String middleInitial;
+	private String lastName;
+	private String streetAddress;
+	private String city;
+	private String province;
+	private String postalCode;	
 	private String phoneNumHome;
 	private String phoneNumWork;
 	private String email;
@@ -19,8 +24,13 @@ public class Person
 //	}
 	public Person()
 	{
-		name = null;
-		address = null;
+		firstName = null;
+		middleInitial = null;
+		lastName = null;
+		streetAddress = null;
+		city = null;
+		province = null;
+		postalCode = null;
 		phoneNumHome = null;
 		phoneNumWork = null;
 		email = null;
@@ -28,12 +38,47 @@ public class Person
 	
 	public String getName()
 	{
-		return name;
+		if(middleInitial == null || middleInitial.equals(""))
+		{
+			return(lastName + ", " + firstName);
+		}
+		else
+		{
+			return (lastName + ", " + firstName + ", " + middleInitial + ".");
+		}
 	}
-	
+	public String getFirstName()
+	{
+		return firstName;
+	}
+	public String getMiddleInitial()
+	{
+		return middleInitial;
+	}
+	public String getLastName()
+	{
+		return lastName;
+	}
+	public String getStAddress()
+	{
+		return streetAddress;
+	}
+	public String getCity()
+	{
+		return city;
+	}
+	public String getProvince()
+	{
+		return province;
+	}
+	public String getPostalCode()
+	{
+		return postalCode;
+	}
 	public String getAddress()
 	{
-		return address;
+		return (streetAddress + "\n" + city + ", " + province + ", " + postalCode);
+
 	}
 	
 	public String getHomePhoneNum()
@@ -51,21 +96,20 @@ public class Person
 		return email;
 	}
 	
-	public void setName(String firstName, String middleInitial, String lastName)
+	public void setName(String aFirstName, String aMiddleInitial, String aLastName)
 	{
-		if(middleInitial == null || middleInitial.equals(""))
-		{
-			name = lastName + ", " + firstName;
-		}
-		else
-		{
-			name = lastName + ", " + firstName + ", " + middleInitial + ".";
-		}
+			lastName = aLastName;
+			firstName = aFirstName;
+			middleInitial = aMiddleInitial;
+		
 	}
 	
-	public void setAddress(String streetAddress, String city, String prov, String postalCode)
+	public void setAddress(String aStreetAddress, String aCity, String aProv, String aPostalCode)
 	{
-		address = streetAddress + "\n" + city + ", " + prov + ", " + postalCode;
+		streetAddress = aStreetAddress;
+		city = aCity;
+		province = aProv;
+		postalCode = aPostalCode;
 	}
 	
 	// TODO - Get rid of substring
