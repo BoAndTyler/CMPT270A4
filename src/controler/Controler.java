@@ -36,8 +36,15 @@ public class Controler {
 	{
 		Person p = new Person();
 		
-		p.setName(firstName, middleInitial, lastName);
-		p.setAddress(streetAddress, city, prov, postalCode);
+		//p.setName(firstName, middleInitial, lastName);
+		p.setFirstName(firstName);
+		p.setMiddleInitial(middleInitial);
+		p.setLastName(lastName);
+		//p.setAddress(streetAddress, city, prov, postalCode);
+		p.setStAddress(streetAddress);
+		p.setCity(city);
+		p.setProvince(prov);
+		p.setPostalCode(postalCode);
 		p.setHomePhoneNum(homePhone);
 		p.setWorkPhoneNum(workPhone);
 		p.setEmail(emailAddress);
@@ -54,8 +61,15 @@ public class Controler {
 	{
 		UndergradStudent u = new UndergradStudent();
 		
-		u.setName(firstName, middleInitial, lastName);
-		u.setAddress(streetAddress, city, prov, postalCode);
+		//u.setName(firstName, middleInitial, lastName);
+		u.setFirstName(firstName);
+		u.setMiddleInitial(middleInitial);
+		u.setLastName(lastName);
+		//u.setAddress(streetAddress, city, prov, postalCode);
+		u.setStAddress(streetAddress);
+		u.setCity(city);
+		u.setProvince(prov);
+		u.setPostalCode(postalCode);
 		u.setHomePhoneNum(homePhone);
 		u.setWorkPhoneNum(workPhone);
 		u.setEmail(emailAddress);
@@ -114,8 +128,15 @@ public class Controler {
 	{
 		GraduateStudent g = new GraduateStudent();
 		
-		g.setName(firstName, middleInitial, lastName);
-		g.setAddress(streetAddress, city, prov, postalCode);
+		//g.setName(firstName, middleInitial, lastName);
+		g.setFirstName(firstName);
+		g.setMiddleInitial(middleInitial);
+		g.setLastName(lastName);
+		//g.setAddress(streetAddress, city, prov, postalCode);
+		g.setStAddress(streetAddress);
+		g.setCity(city);
+		g.setProvince(prov);
+		g.setPostalCode(postalCode);
 		g.setHomePhoneNum(homePhone);
 		g.setWorkPhoneNum(workPhone);
 		g.setEmail(emailAddress);
@@ -127,7 +148,9 @@ public class Controler {
 		g.setTotalCredits(totalCredits);
 		
 		g.setThesisSupervisor(supervisor);
-		g.setThesis(thesisTitle, thesisArea);
+		//g.setThesis(thesisTitle, thesisArea);
+		g.setThesisTitle(thesisTitle);
+		g.setThesisArea(thesisArea);
 		g.setScholarShipAmount(scholarship);
 		g.setDegreeType(degreeType);
 		

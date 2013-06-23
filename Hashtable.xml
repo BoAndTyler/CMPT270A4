@@ -1,4 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.7.0_21" class="java.beans.XMLDecoder">
- <object class="java.util.Hashtable"/>
+ <object class="java.util.Hashtable">
+  <void method="put">
+   <string>e, q, w.</string>
+   <object class="systemEntities.GraduateStudent">
+    <void property="GPA">
+     <string>f</string>
+    </void>
+    <void property="city">
+     <string>t</string>
+    </void>
+    <void property="degreeProgram">
+     <string>s</string>
+    </void>
+    <void property="degreeType">
+     <string>z</string>
+    </void>
+    <void property="email">
+     <string>p</string>
+    </void>
+    <void property="firstName">
+     <string>q</string>
+    </void>
+    <void property="homePhoneNum">
+     <string>i</string>
+    </void>
+    <void property="lastName">
+     <string>e</string>
+    </void>
+    <void property="middleInitial">
+     <string>w</string>
+    </void>
+    <void property="postalCode">
+     <string>u</string>
+    </void>
+    <void property="province">
+     <string>y</string>
+    </void>
+    <void property="scholarShipAmount">
+     <string>l</string>
+    </void>
+    <void property="stAddress">
+     <string>r</string>
+    </void>
+    <void property="thesisArea">
+     <string>k</string>
+    </void>
+    <void property="thesisSupervisor">
+     <string>h</string>
+    </void>
+    <void property="thesisTitle">
+     <string>j</string>
+    </void>
+    <void property="totalCredits">
+     <string>g</string>
+    </void>
+    <void property="workPhoneNum">
+     <string>o</string>
+    </void>
+    <void property="yearInProgram">
+     <string>d</string>
+    </void>
+    <void property="yearRegistered">
+     <string>a</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>33, 11, 22.</string>
+   <object class="systemEntities.UndergradStudent">
+    <void property="GPA">
+     <string>444</string>
+    </void>
+    <void property="city">
+     <string>55</string>
+    </void>
+    <void property="degreeProgram">
+     <string>222</string>
+    </void>
+    <void property="email">
+     <string>00</string>
+    </void>
+    <void property="firstName">
+     <string>11</string>
+    </void>
+    <void property="homePhoneNum">
+     <string>88</string>
+    </void>
+    <void property="lastName">
+     <string>33</string>
+    </void>
+    <void property="middleInitial">
+     <string>22</string>
+    </void>
+    <void property="postalCode">
+     <string>77</string>
+    </void>
+    <void property="province">
+     <string>66</string>
+    </void>
+    <void property="stAddress">
+     <string>44</string>
+    </void>
+    <void property="totalCredits">
+     <string>555</string>
+    </void>
+    <void property="workPhoneNum">
+     <string>99</string>
+    </void>
+    <void property="yearInProgram">
+     <string>333</string>
+    </void>
+    <void property="yearRegistered">
+     <string>111</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>3, 1, 2.</string>
+   <object class="systemEntities.Person">
+    <void property="city">
+     <string>5</string>
+    </void>
+    <void property="email">
+     <string>0</string>
+    </void>
+    <void property="firstName">
+     <string>1</string>
+    </void>
+    <void property="homePhoneNum">
+     <string>8</string>
+    </void>
+    <void property="lastName">
+     <string>3</string>
+    </void>
+    <void property="middleInitial">
+     <string>2</string>
+    </void>
+    <void property="postalCode">
+     <string>7</string>
+    </void>
+    <void property="province">
+     <string>6</string>
+    </void>
+    <void property="stAddress">
+     <string>4</string>
+    </void>
+    <void property="workPhoneNum">
+     <string>9</string>
+    </void>
+   </object>
+  </void>
+ </object>
 </java>

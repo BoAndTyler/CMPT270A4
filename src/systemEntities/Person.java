@@ -104,11 +104,46 @@ public class Person
 		
 	}
 	
+	public void setFirstName(String aFirstName)
+	{
+		firstName = aFirstName;
+	}
+	
+	public void setMiddleInitial(String aMiddleInitial)
+	{
+		middleInitial = aMiddleInitial;
+	}
+	
+	public void setLastName(String aLastName)
+	{
+		lastName = aLastName;
+	}
+	
 	public void setAddress(String aStreetAddress, String aCity, String aProv, String aPostalCode)
 	{
 		streetAddress = aStreetAddress;
 		city = aCity;
 		province = aProv;
+		postalCode = aPostalCode;
+	}
+	
+	public void setStAddress(String aStreetAddress)
+	{
+		streetAddress = aStreetAddress;
+	}
+	
+	public void setCity(String aCity)
+	{
+		city = aCity;
+	}
+	
+	public void setProvince(String aProv)
+	{
+		province = aProv;
+	}
+	
+	public void setPostalCode(String aPostalCode)
+	{
 		postalCode = aPostalCode;
 	}
 	

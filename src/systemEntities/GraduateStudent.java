@@ -37,7 +37,7 @@ public class GraduateStudent extends UndergradStudent
 	
 	public String getThesis()
 	{
-		return thesis.getTitle() + "/n" + thesis.getArea();
+		return thesis.getTitle() + "\n" + thesis.getArea();
 	}
 	public String getThesisTitle(){
 		return thesis.getTitle();
@@ -68,6 +68,16 @@ public class GraduateStudent extends UndergradStudent
 		thesis.setArea(newArea);
 	}
 	
+	public void setThesisTitle(String newTitle)
+	{
+		thesis.setTitle(newTitle);
+	}
+	
+	public void setThesisArea(String newArea)
+	{
+		thesis.setArea(newArea);
+	}
+	
 	public void setScholarShipAmount(String amount)
 	{
 		scholarShipAmount = amount;
@@ -89,7 +99,7 @@ public class GraduateStudent extends UndergradStudent
 		}
 		
 		newGradStudent.setThesis("Thesis Title", "Field of study");
-		if(!newGradStudent.getThesis().equals("Thesis Title/nField of study"))
+		if(!newGradStudent.getThesis().equals("Thesis Title\nField of study"))
 		{
 			System.out.println("Failed to set the thesis title.");
 		}
